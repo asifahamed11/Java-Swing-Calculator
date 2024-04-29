@@ -1,13 +1,20 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import javax.swing.border.EmptyBorder;
 
-public class App extends JFrame {
+public class App extends JFrame implements ActionListener {
     public Container c;
     JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPlus, btnMinus, btnMultiply, btnDivide,
             btnEqual, btnClear, btnDot;
+    JTextField tf;
+    double firstNumber, secondNumber, result;
+    String operation;
+
     Font buttonFont = new Font("ADLaM Display", Font.BOLD, 18);
     Font signature = new Font("Arty Signature", Font.BOLD, 40);
+    Font tf_Font = new Font("Digital-7", Font.PLAIN, 40);
 
     App() {
         c = getContentPane();
@@ -29,9 +36,11 @@ public class App extends JFrame {
         c.add(l);
 
         Color color3 = new Color(187, 180, 160);
-        JTextField tf = new JTextField();
+        tf = new JTextField();
         tf.setBounds(30, 50, 290, 70);
         tf.setBackground(color3);
+        tf.setFont(tf_Font);
+        tf.setEditable(false);
         tf.setBorder(BorderFactory.createLineBorder(border, 15));
         c.add(tf);
 
@@ -52,6 +61,24 @@ public class App extends JFrame {
         btnEqual = new JButton("=");
         btnClear = new JButton("C");
         btnDot = new JButton(".");
+
+        btn1.addActionListener(this);
+        btn2.addActionListener(this);
+        btn3.addActionListener(this);
+        btn4.addActionListener(this);
+        btn5.addActionListener(this);
+        btn6.addActionListener(this);
+        btn7.addActionListener(this);
+        btn8.addActionListener(this);
+        btn9.addActionListener(this);
+        btn0.addActionListener(this);
+        btnPlus.addActionListener(this);
+        btnMinus.addActionListener(this);
+        btnMultiply.addActionListener(this);
+        btnDivide.addActionListener(this);
+        btnEqual.addActionListener(this);
+        btnClear.addActionListener(this);
+        btnDot.addActionListener(this);
 
         btn1.setBackground(buttonColor);
         btn1.setForeground(textColor);
@@ -117,7 +144,6 @@ public class App extends JFrame {
         btnClear.setForeground(Color.WHITE);
         btnClear.setFont(buttonFont);
         btnClear.setBorder(new EmptyBorder(0, 0, 0, 0));
-
         btnDot.setBackground(buttonColor_2);
         btnDot.setForeground(Color.WHITE);
         btnDot.setFont(buttonFont);
@@ -158,6 +184,59 @@ public class App extends JFrame {
         c.add(btnEqual);
         c.add(btnClear);
         c.add(btnDot);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == btnClear) {
+            tf.setText("");
+            firstNumber = 0;
+            secondNumber = 0;
+            result = 0;
+            operation = "";
+        } else if (e.getSource() == btnDot) {
+            tf.setText(tf.getText() + ".");
+        } else if (e.getSource() == btnPlus) {
+            firstNumber = Double.parseDouble(tf.getText());
+            tf.setText("");
+            operation = "+";
+        } else if (e.getSource() == btnMinus) {
+            firstNumber = Double.parseDouble(tf.getText());
+            tf.setText("");
+            operation = "-";
+        } else if (e.getSource() == btnMultiply) {
+            firstNumber = Double.parseDouble(tf.getText());
+            tf.setText("");
+            operation = "x";
+        } else if (e.getSource() == btnDivide) {
+            firstNumber = Double.parseDouble(tf.getText());
+            tf.setText("");
+            operation = "/";
+        } else if (e.getSource() == btnEqual) {
+            secondNumber = Double.parseDouble(tf.getText());
+            switch (operation) {
+                case "+":
+                    result = firstNumber + secondNumber;
+                    break;
+                case "-":
+                    result = firstNumber - secondNumber;
+                    break;
+                case "x":
+                    result = firstNumber * secondNumber;
+                    break;
+                case "/":
+                    result = firstNumber / secondNumber;
+                    break;
+            }
+            tf.setText(Double.toString(result));
+            firstNumber = 0;
+            secondNumber = 0;
+            result = 0;
+            operation = "";
+        } else {
+            tf.setText(tf.getText() + e.getActionCommand());
+        }
+
     }
 
     public static void main(String[] args) {
