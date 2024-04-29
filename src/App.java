@@ -20,6 +20,7 @@ public class App extends JFrame {
         Color buttonColor = new Color(55, 55, 55);
         Color buttonColor_2 = new Color(77, 77, 77);
         Color textColor = new Color(99, 92, 74);
+        Color border = new Color(216, 219, 212);
 
         JLabel l = new JLabel("ASIF");
         l.setBounds(210, 360, 100, 50);
@@ -31,7 +32,7 @@ public class App extends JFrame {
         JTextField tf = new JTextField();
         tf.setBounds(30, 50, 290, 70);
         tf.setBackground(color3);
-        tf.setBorder(new EmptyBorder(0, 0, 0, 0));
+        tf.setBorder(BorderFactory.createLineBorder(border, 15));
         c.add(tf);
 
         btn1 = new JButton("1");
