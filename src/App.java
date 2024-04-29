@@ -1,5 +1,8 @@
-public class App {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+import javax.swing.*;
+
+public class App extends JFrame {
+    public static void main(String[] args) {
+        App frame = new App();
+        frame.setVisible(true);
     }
 }
