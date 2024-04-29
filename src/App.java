@@ -7,6 +7,7 @@ public class App extends JFrame {
     JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPlus, btnMinus, btnMultiply, btnDivide,
             btnEqual, btnClear, btnDot;
     Font buttonFont = new Font("ADLaM Display", Font.BOLD, 18);
+    Font signature = new Font("Arty Signature", Font.BOLD, 40);
 
     App() {
         c = getContentPane();
@@ -16,9 +17,19 @@ public class App extends JFrame {
         ImageIcon i = new ImageIcon("D:\\CSE 213(JAVA)\\LAB\\Calculator\\src\\image.png");
         setIconImage(i.getImage());
 
+        Color buttonColor = new Color(55, 55, 55);
+        Color buttonColor_2 = new Color(77, 77, 77);
+        Color textColor = new Color(99, 92, 74);
+
+        JLabel l = new JLabel("ASIF");
+        l.setBounds(210, 360, 100, 50);
+        l.setFont(signature);
+        l.setForeground(buttonColor_2);
+        c.add(l);
+
         Color color3 = new Color(187, 180, 160);
         JTextField tf = new JTextField();
-        tf.setBounds(30, 30, 290, 70);
+        tf.setBounds(30, 50, 290, 70);
         tf.setBackground(color3);
         tf.setBorder(new EmptyBorder(0, 0, 0, 0));
         c.add(tf);
@@ -40,10 +51,6 @@ public class App extends JFrame {
         btnEqual = new JButton("=");
         btnClear = new JButton("C");
         btnDot = new JButton(".");
-
-        Color buttonColor = new Color(50, 50, 50);
-        Color buttonColor_2 = new Color(77, 77, 77);
-        Color textColor = new Color(99, 92, 74);
 
         btn1.setBackground(buttonColor);
         btn1.setForeground(textColor);
