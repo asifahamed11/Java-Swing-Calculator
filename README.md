@@ -26,13 +26,13 @@ This is a simple calculator application built using Java and Swing. It provides 
 1. **Clone the Repository**: Clone this repository to your local machine using the following command:
 
    ```bash
-   git clone [https://github.com/asifahamed11/Java-Swing-Calculator.git]
+   git clone https://github.com/asifahamed11/Java-Swing-Calculator.git
    ```
 
 2. **Navigate to the Project Directory**:
 
    ```bash
-   cd simple-calculator
+   cd Java-Swing-Calculator
    ```
 
 3. **Compile and Run the Application**: Open the project in your preferred IDE and run the `App` class.
