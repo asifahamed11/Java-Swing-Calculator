@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import javax.swing.border.EmptyBorder;
 
 public class App extends JFrame implements ActionListener {
@@ -187,55 +186,6 @@ public class App extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == btnClear) {
-            tf.setText("");
-            firstNumber = 0;
-            secondNumber = 0;
-            result = 0;
-            operation = "";
-        } else if (e.getSource() == btnDot) {
-            tf.setText(tf.getText() + ".");
-        } else if (e.getSource() == btnPlus) {
-            firstNumber = Double.parseDouble(tf.getText());
-            tf.setText("");
-            operation = "+";
-        } else if (e.getSource() == btnMinus) {
-            firstNumber = Double.parseDouble(tf.getText());
-            tf.setText("");
-            operation = "-";
-        } else if (e.getSource() == btnMultiply) {
-            firstNumber = Double.parseDouble(tf.getText());
-            tf.setText("");
-            operation = "x";
-        } else if (e.getSource() == btnDivide) {
-            firstNumber = Double.parseDouble(tf.getText());
-            tf.setText("");
-            operation = "/";
-        } else if (e.getSource() == btnEqual) {
-            secondNumber = Double.parseDouble(tf.getText());
-            switch (operation) {
-                case "+":
-                    result = firstNumber + secondNumber;
-                    break;
-                case "-":
-                    result = firstNumber - secondNumber;
-                    break;
-                case "x":
-                    result = firstNumber * secondNumber;
-                    break;
-                case "/":
-                    result = firstNumber / secondNumber;
-                    break;
-            }
-            tf.setText(Double.toString(result));
-            firstNumber = 0;
-            secondNumber = 0;
-            result = 0;
-            operation = "";
-        } else {
-            tf.setText(tf.getText() + e.getActionCommand());
-        }
 
     }
 
