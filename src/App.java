@@ -6,10 +6,10 @@ import javax.swing.border.EmptyBorder;
 public class App extends JFrame implements ActionListener {
     public Container c;
     JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPlus, btnMinus, btnMultiply, btnDivide,
-            btnEqual, btnClear, btnDot;
+            btnEqual, btnClear, btnBack, btnDot;
     JTextField tf;
     double firstNumber, secondNumber, result;
-    String operation;
+    String operation, answer;
 
     Font buttonFont = new Font("ADLaM Display", Font.BOLD, 18);
     Font signature = new Font("Arty Signature", Font.BOLD, 40);
@@ -27,12 +27,7 @@ public class App extends JFrame implements ActionListener {
         Color buttonColor_2 = new Color(77, 77, 77);
         Color textColor = new Color(99, 92, 74);
         Color border = new Color(216, 219, 212);
-
-        JLabel l = new JLabel("ASIF");
-        l.setBounds(210, 360, 100, 50);
-        l.setFont(signature);
-        l.setForeground(buttonColor_2);
-        c.add(l);
+        Color equalColor = new Color(255, 102, 56, 255);
 
         Color color3 = new Color(187, 180, 160);
         tf = new JTextField();
@@ -59,6 +54,7 @@ public class App extends JFrame implements ActionListener {
         btnDivide = new JButton("/");
         btnEqual = new JButton("=");
         btnClear = new JButton("C");
+        btnBack = new JButton("Back");
         btnDot = new JButton(".");
 
         btn1.addActionListener(this);
@@ -77,76 +73,36 @@ public class App extends JFrame implements ActionListener {
         btnDivide.addActionListener(this);
         btnEqual.addActionListener(this);
         btnClear.addActionListener(this);
+        btnBack.addActionListener(this);
         btnDot.addActionListener(this);
 
-        btn1.setBackground(buttonColor);
-        btn1.setForeground(textColor);
-        btn1.setFont(buttonFont);
-        btn1.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btn2.setBackground(buttonColor);
-        btn2.setForeground(textColor);
-        btn2.setFont(buttonFont);
-        btn2.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btn3.setBackground(buttonColor);
-        btn3.setForeground(textColor);
-        btn3.setFont(buttonFont);
-        btn3.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btn4.setBackground(buttonColor);
-        btn4.setForeground(textColor);
-        btn4.setFont(buttonFont);
-        btn4.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btn5.setBackground(buttonColor);
-        btn5.setForeground(textColor);
-        btn5.setFont(buttonFont);
-        btn5.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btn6.setBackground(buttonColor);
-        btn6.setForeground(textColor);
-        btn6.setFont(buttonFont);
-        btn6.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btn7.setBackground(buttonColor);
-        btn7.setForeground(textColor);
-        btn7.setFont(buttonFont);
-        btn7.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btn8.setBackground(buttonColor);
-        btn8.setForeground(textColor);
-        btn8.setFont(buttonFont);
-        btn8.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btn9.setBackground(buttonColor);
-        btn9.setForeground(textColor);
-        btn9.setFont(buttonFont);
-        btn9.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btn0.setBackground(buttonColor);
-        btn0.setForeground(textColor);
-        btn0.setFont(buttonFont);
-        btn0.setBorder(new EmptyBorder(0, 0, 0, 0));
+        JButton[] buttons = { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPlus, btnMinus,
+                btnMultiply, btnDivide, btnEqual, btnClear, btnBack, btnDot };
+
+        for (JButton button : buttons) {
+            button.setBackground(buttonColor);
+            button.setForeground(textColor);
+            button.setFont(buttonFont);
+            button.setBorder(new EmptyBorder(0, 0, 0, 0));
+        }
+
         btnPlus.setBackground(buttonColor_2);
-        btnPlus.setForeground(Color.WHITE);
-        btnPlus.setFont(buttonFont);
-        btnPlus.setBorder(new EmptyBorder(0, 0, 0, 0));
         btnMinus.setBackground(buttonColor_2);
-        btnMinus.setForeground(Color.WHITE);
-        btnMinus.setFont(buttonFont);
-        btnMinus.setBorder(new EmptyBorder(0, 0, 0, 0));
         btnMultiply.setBackground(buttonColor_2);
-        btnMultiply.setForeground(Color.WHITE);
-        btnMultiply.setFont(buttonFont);
-        btnMultiply.setBorder(new EmptyBorder(0, 0, 0, 0));
         btnDivide.setBackground(buttonColor_2);
-        btnDivide.setForeground(Color.WHITE);
-        btnDivide.setFont(buttonFont);
-        btnDivide.setBorder(new EmptyBorder(0, 0, 0, 0));
-        btnEqual.setBackground(buttonColor_2);
-        btnEqual.setForeground(Color.WHITE);
-        btnEqual.setFont(buttonFont);
-        btnEqual.setBorder(new EmptyBorder(0, 0, 0, 0));
+        btnEqual.setBackground(equalColor);
         btnClear.setBackground(buttonColor_2);
-        btnClear.setForeground(Color.WHITE);
-        btnClear.setFont(buttonFont);
-        btnClear.setBorder(new EmptyBorder(0, 0, 0, 0));
+        btnBack.setBackground(buttonColor_2);
         btnDot.setBackground(buttonColor_2);
+
+        btnPlus.setForeground(Color.WHITE);
+        btnMinus.setForeground(Color.WHITE);
+        btnMultiply.setForeground(Color.WHITE);
+        btnDivide.setForeground(Color.WHITE);
+        btnEqual.setForeground(Color.WHITE);
+        btnClear.setForeground(Color.WHITE);
+        btnBack.setForeground(Color.WHITE);
         btnDot.setForeground(Color.WHITE);
-        btnDot.setFont(buttonFont);
-        btnDot.setBorder(new EmptyBorder(0, 0, 0, 0));
 
         btn1.setBounds(30, 300, 50, 50);
         btn2.setBounds(90, 300, 50, 50);
@@ -165,6 +121,7 @@ public class App extends JFrame implements ActionListener {
         btnDivide.setBounds(270, 180, 50, 50);
         btnEqual.setBounds(270, 240, 50, 110);
         btnClear.setBounds(30, 360, 50, 50);
+        btnBack.setBounds(210, 360, 110, 50);
 
         c.add(btn1);
         c.add(btn2);
@@ -182,16 +139,106 @@ public class App extends JFrame implements ActionListener {
         c.add(btnDivide);
         c.add(btnEqual);
         c.add(btnClear);
+        c.add(btnBack);
         c.add(btnDot);
     }
 
     public void actionPerformed(ActionEvent e) {
-
+        try {
+            if (e.getSource() == btnClear) {
+                tf.setText("");
+            } else if (e.getSource() == btnBack) {
+                String backSpace = null;
+                if (tf.getText().length() > 0) {
+                    StringBuilder strB = new StringBuilder(tf.getText());
+                    strB.deleteCharAt(tf.getText().length() - 1);
+                    backSpace = strB.toString();
+                    tf.setText(backSpace);
+                }
+            } else if (e.getSource() == btn1) {
+                tf.setText(tf.getText() + "1");
+            } else if (e.getSource() == btn2) {
+                tf.setText(tf.getText() + "2");
+            } else if (e.getSource() == btn3) {
+                tf.setText(tf.getText() + "3");
+            } else if (e.getSource() == btn4) {
+                tf.setText(tf.getText() + "4");
+            } else if (e.getSource() == btn5) {
+                tf.setText(tf.getText() + "5");
+            } else if (e.getSource() == btn6) {
+                tf.setText(tf.getText() + "6");
+            } else if (e.getSource() == btn7) {
+                tf.setText(tf.getText() + "7");
+            } else if (e.getSource() == btn8) {
+                tf.setText(tf.getText() + "8");
+            } else if (e.getSource() == btn9) {
+                tf.setText(tf.getText() + "9");
+            } else if (e.getSource() == btn0) {
+                tf.setText(tf.getText() + "0");
+            } else if (e.getSource() == btnDot) {
+                if (!tf.getText().contains(".")) {
+                    tf.setText(tf.getText() + ".");
+                }
+            } else if (e.getSource() == btnPlus) {
+                firstNumber = Double.parseDouble(tf.getText());
+                tf.setText("");
+                operation = "+";
+            } else if (e.getSource() == btnMinus) {
+                firstNumber = Double.parseDouble(tf.getText());
+                tf.setText("");
+                operation = "-";
+            } else if (e.getSource() == btnMultiply) {
+                firstNumber = Double.parseDouble(tf.getText());
+                tf.setText("");
+                operation = "x";
+            } else if (e.getSource() == btnDivide) {
+                firstNumber = Double.parseDouble(tf.getText());
+                tf.setText("");
+                operation = "/";
+            } else if (e.getSource() == btnEqual) {
+                secondNumber = Double.parseDouble(tf.getText());
+                switch (operation) {
+                    case "+":
+                        result = firstNumber + secondNumber;
+                        answer = String.format("%.2f", result);
+                        tf.setText(answer);
+                        break;
+                    case "-":
+                        result = firstNumber - secondNumber;
+                        answer = String.format("%.2f", result);
+                        tf.setText(answer);
+                        break;
+                    case "x":
+                        result = firstNumber * secondNumber;
+                        answer = String.format("%.2f", result);
+                        tf.setText(answer);
+                        break;
+                    case "/":
+                        if (secondNumber == 0) {
+                            JOptionPane.showMessageDialog(null, "Can't divide by zero");
+                        } else {
+                            result = firstNumber / secondNumber;
+                            answer = String.format("%.2f", result);
+                            tf.setText(answer);
+                        }
+                        break;
+                }
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid Input");
+            tf.setText("");
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "Operation not complete");
+            tf.setText("");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + ex.getMessage());
+            tf.setText("");
+        }
     }
 
     public static void main(String[] args) {
         App frame = new App();
-        frame.setTitle("Calculator");
+        frame.setTitle("Simple Calculator");
         frame.setVisible(true);
         frame.setBounds(500, 150, 360, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
